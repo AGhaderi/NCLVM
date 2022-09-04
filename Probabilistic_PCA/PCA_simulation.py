@@ -40,9 +40,13 @@ def prior(batch_size):
 
 def PCA_trial(params, n_trials, P = 4, D = 2):
     """Simulates a trial from the pca."""
-
-    L_t = params[0:5]
-    psi = params[5:9]
+    
+    # number of non-zero loadings
+    M = int(D*(P-D)+ D*(D-1)/2)
+    # lower diagonal elements of L
+    L = params[0:M]
+    # vector of variances
+    psi = params[M:M+P]
         
     # the loading matrix
     idx = 0
